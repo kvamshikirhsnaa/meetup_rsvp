@@ -4,7 +4,7 @@
 		module="meetup_rsvp$sources"
 		revision="0.1"
 		status="integration"
-		publication="20191113122526"
+		publication="20191113164059"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
