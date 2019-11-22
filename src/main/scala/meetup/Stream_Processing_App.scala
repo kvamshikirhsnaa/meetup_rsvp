@@ -24,12 +24,6 @@ class Stream_Processing_App {
   val mysql_table_name = "meetup_rsvp_message_agg_details_tbl"
   val mysql_jdbc_url = s"jdbc:mysql://${mysql_host_name}:${mysql_port_no}/${mysql_database_name}"
 
-  val mongodb_host_name = "localhost"
-  val mognodb_port_no = "27017"
-  val mongodb_user_name = "admin"
-  val mongodb_password = "admin"
-  val mongodb_database_name = "meetup_rsvp_db"
-  val mongodb_collection_name = "meetup_rsvp_message_detail_tbl"
 
 
   def meetupStream(spark: SparkSession):DataFrame = {
@@ -90,6 +84,7 @@ class Stream_Processing_App {
 
   def meetupStream(spark: SparkSession, meetup_rsvp_df: DataFrame): DataFrame = {
     import spark.implicits._
+
     val df = meetup_rsvp_df.select( 'value.cast( StringType ), 'timestamp.cast( TimestampType ) )
 
     val df2 = df.select(from_json('value, meetup_rsvp_message_schema) as "message_detail", 'timestamp)
@@ -111,7 +106,7 @@ class Stream_Processing_App {
 
   // writing final result into console for debugging purpose
 
-  def meetupToConsole(spark: SparkSession, meetupDF: DataFrame): Any = {
+  def meetupToConsole(spark: SparkSession, meetupDF: DataFrame) = {
     meetupDF.writeStream.
       trigger( Trigger.ProcessingTime( "30 seconds" ) ).
       outputMode( "update" ).

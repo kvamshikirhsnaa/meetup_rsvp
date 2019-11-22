@@ -65,7 +65,7 @@ object JsonSchemaParsing {
       add("event", new StructType().add("event_name", StringType).
         add("event_id", StringType).add("time", StringType).
         add("evnt_url", StringType)).
-      add("group", new StructType().add("group_topics", new ArrayType(new StructType().
+      add("group", new StructType().add("group_topics", ArrayType(new StructType().
         add("urlkey", StringType).add("topic_name", StringType), true))).
       add("group_city", StringType).
       add("group_country", StringType).
