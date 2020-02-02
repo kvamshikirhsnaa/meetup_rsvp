@@ -93,8 +93,8 @@ class Stream_Processing_App {
 
     val df4 = df3.select($"group.group_name", $"group.group_country",
       $"group.group_state", $"group.group_city", $"group.group_lat", $"group.group_lon", $"group.group_id",
-      $"group.group_topics", $"member.meber_name", $"member.member_id", $"member.member_photo", $"venue.venue_name",
-      $"venue.lon", $"venue.lat", $"venu.venue_id", $"visibility", $"response", $"guests", $"event.event_id",
+      $"group.group_topics", $"member.member_name", $"member.member_id", $"member.photo", $"venue.venue_name",
+      $"venue.lon", $"venue.lat", $"venue.venue_id", $"visibility", $"response", $"guests", $"event.event_id",
       $"event.event_name", $"event.time", $"event.event_url")
 
     val df5 = df4.groupBy('group_name, 'group_country, 'group_state,

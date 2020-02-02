@@ -25,7 +25,7 @@ class Kafka_Producer_Demo {
 
   //set the kafka producer details in the properties object
   val properties_object = new Properties()
-  properties_object.put("bootstrap_servers", kafka_bootstrap_servers)
+  properties_object.put("bootstrap.servers", kafka_bootstrap_servers)
   properties_object.put("acks", "all")
   properties_object.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   properties_object.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
@@ -33,11 +33,13 @@ class Kafka_Producer_Demo {
   properties_object.put("auto.commit.interval.ms", "1000")
   properties_object.put("session.timeout.ms", "3000")
 
+
   val kafka_producer_object = new KafkaProducer[String, String](properties_object)
 
 
 
   def kafakProducer: Unit = {
+
     while (parser_object.nextToken() != null) {
       val message_record = parser_object.readValueAsTree().toString
       println( message_record )

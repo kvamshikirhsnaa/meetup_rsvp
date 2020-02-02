@@ -31,7 +31,5 @@ object Kafka_Spark_Stream {
 
 
 
-
-
   }
 }
